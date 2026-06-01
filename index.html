@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iliya Vasilev | IT Engineer & Energy Tech Portfolio</title>
+  <meta name="description" content="Portfolio of Iliya Vasilev, IT Engineering graduate focused on software development, machine learning, energy systems, and virtual power plant optimization." />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --card: rgba(255, 255, 255, 0.075);
+      --card-strong: rgba(255, 255, 255, 0.11);
+      --text: #f6f7fb;
+      --muted: #b8c0d9;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --line: rgba(255, 255, 255, 0.14);
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.28), transparent 35%),
+        radial-gradient(circle at top right, rgba(167, 139, 250, 0.28), transparent 34%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(18px);
+      background: rgba(11, 16, 32, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 96px 0 58px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.055);
+      margin-bottom: 22px;
+      font-size: 0.93rem;
+    }
+
+    .badge span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.75);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 5.3rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      max-width: 860px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      margin-top: 24px;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      padding: 13px 18px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #06101f;
+      border: 0;
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.065);
+      color: var(--text);
+    }
+
+    .profile-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .profile-card .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 28px;
+      display: grid;
+      place-items: center;
+      font-size: 2.2rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.25), rgba(167, 139, 250, 0.25));
+      border: 1px solid var(--line);
+      margin-bottom: 18px;
+    }
+
+    .profile-card h2 {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .profile-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .quick-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 34px 0 20px;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 48px 0;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: end;
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(1.75rem, 3vw, 2.55rem);
+      letter-spacing: -0.045em;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 560px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.18);
+    }
+
+    .card:hover {
+      background: var(--card-strong);
+    }
+
+    .card .tag {
+      display: inline-flex;
+      color: #06101f;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .card ul {
+      margin-left: 18px;
+      margin-top: 10px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.055);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 0.93rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 170px 1fr;
+      gap: 18px;
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .timeline-item time {
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.12), rgba(167, 139, 250, 0.12));
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 44px 26px;
+      margin-bottom: 54px;
+    }
+
+    .contact h2 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      letter-spacing: -0.055em;
+      margin-bottom: 12px;
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto 24px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      padding: 26px 0;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 70px;
+      }
+
+      .grid, .quick-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        display: block;
+      }
+
+      .section-title p {
+        margin-top: 10px;
+      }
+
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="logo" href="#top">Iliya Vasilev</a>
+        <div class="nav-links">
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div>
+        <div class="badge"><span></span> Open to junior IT, software, data and energy-tech roles</div>
+        <h1>IT Engineer building <span class="gradient-text">software, AI tools and energy-tech systems.</span></h1>
+        <p>
+          I am an IT Engineering graduate from Centria University of Applied Sciences with hands-on experience in Python, Flask, machine learning, cloud fundamentals and energy-market software. My strongest interest is building practical tools that connect software, automation and the power sector.
+        </p>
+        <div class="actions">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn secondary" href="mailto:your.drogoltrenol@gmail.com">Contact Me</a>
+          <a class="btn secondary" href="https://github.com/kolumbino target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/iliya-vasilev-55391222a/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="profile-card">
+        <div class="avatar">IV</div>
+        <h2>Software + Energy Focus</h2>
+        <p>
+          Based in Finland. Interested in junior developer, data/AI, technical support, energy systems and remote IT roles.
+        </p>
+      </aside>
+    </section>
+
+    <div class="quick-stats">
+      <div class="stat">
+        <strong>Python</strong>
+        <span>Flask, APIs, ML models, automation</span>
+      </div>
+      <div class="stat">
+        <strong>Energy Tech</strong>
+        <span>Virtual power plant and spot-market algorithm work</span>
+      </div>
+      <div class="stat">
+        <strong>Cloud & Web</strong>
+        <span>Azure basics, GitHub, HTML/CSS, dashboards</span>
+      </div>
+    </div>
+
+    <section id="projects">
+      <div class="section-title">
+        <h2>Featured Projects</h2>
+        <p>Projects selected to show practical problem-solving, software development and energy-sector interest.</p>
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="tag">Thesis Project</div>
+          <h3>Electricity Trading Algorithm for a Virtual Power Plant</h3>
+          <p>
+            Developed a Python/Flask-based system concept for optimizing electricity buying and selling decisions using spot-market data, consumption prediction and battery management logic.
+          </p>
+          <ul>
+            <li>Python, Flask, LightGBM</li>
+            <li>ENTSO-E and weather API data</li>
+            <li>Forecasting, thresholds and dashboard logic</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">Award Project</div>
+          <h3>Polar Sensor Web Bluetooth Project</h3>
+          <p>
+            Built software for connecting Polar H10 and Verity Sense sensors to a Chrome browser using Web Bluetooth during an international university collaboration project.
+          </p>
+          <ul>
+            <li>Web Bluetooth</li>
+            <li>JavaScript and browser APIs</li>
+            <li>First-prize team project</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">AI / Automation</div>
+          <h3>Machine Learning Experiments</h3>
+          <p>
+            Completed practical AI exercises using classification, regression, clustering, neural networks and image classification with Python-based tools.
+          </p>
+          <ul>
+            <li>scikit-learn, TensorFlow/Keras</li>
+            <li>Data analysis with Pandas</li>
+            <li>Model evaluation and visualization</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">Web App</div>
+          <h3>Flask Dashboard Concept</h3>
+          <p>
+            Designed dashboard logic for displaying electricity data, predictions and algorithm decisions in a simple web interface.
+          </p>
+          <ul>
+            <li>Flask routes and templates</li>
+            <li>API data fetching</li>
+            <li>Decision-making output display</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">Cybersecurity</div>
+          <h3>Cybersecurity Coursework Labs</h3>
+          <p>
+            Worked on practical security topics including SQL injection, secure software concepts, fuzzing, session handling and network analysis.
+          </p>
+          <ul>
+            <li>Python, Django, SQLite</li>
+            <li>Web security concepts</li>
+            <li>Network and protocol exercises</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="tag">IoT</div>
+          <h3>Arduino Motion Timer</h3>
+          <p>
+            Created an Arduino-based LCD timer with PIR motion detection, LED signaling and button-controlled time setting.
+          </p>
+          <ul>
+            <li>Arduino Uno</li>
+            <li>LCD, PIR sensor, buttons</li>
+            <li>Embedded logic and debugging</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-title">
+        <h2>Technical Skills</h2>
+        <p>A practical mix of programming, data, cloud and energy-system knowledge.</p>
+      </div>
+      <div class="skills">
+        <span class="skill">Python</span>
+        <span class="skill">Flask</span>
+        <span class="skill">JavaScript</span>
+        <span class="skill">HTML/CSS</span>
+        <span class="skill">SQL</span>
+        <span class="skill">C#</span>
+        <span class="skill">C/C++</span>
+        <span class="skill">Java</span>
+        <span class="skill">Pandas</span>
+        <span class="skill">scikit-learn</span>
+        <span class="skill">LightGBM</span>
+        <span class="skill">TensorFlow/Keras</span>
+        <span class="skill">APIs</span>
+        <span class="skill">GitHub</span>
+        <span class="skill">Azure Fundamentals</span>
+        <span class="skill">Cybersecurity Basics</span>
+        <span class="skill">Energy Markets</span>
+        <span class="skill">Virtual Power Plants</span>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-title">
+        <h2>Experience & Education</h2>
+        <p>Academic, project and self-driven experience with a strong practical focus.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <time>2025–2026</time>
+          <div>
+            <h3>Thesis: Electricity Trading Algorithm for a Virtual Power Plant</h3>
+            <p>Focused on optimizing electricity trading decisions with software, API data and machine learning-based forecasting.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <time>2024–2025</time>
+          <div>
+            <h3>RDI / Energy Project Work</h3>
+            <p>Worked in an RDI environment connected to virtual power plant efficiency and energy-sector software ideas.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <time>2023–2026</time>
+          <div>
+            <h3>IT Engineering Studies — Centria University of Applied Sciences</h3>
+            <p>Studied software development, AI, cloud, cybersecurity, databases, web development and embedded systems.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <time>2023</time>
+          <div>
+            <h3>International Polar Sensor Project</h3>
+            <p>First-prize team project connecting Polar health sensors to a browser using Web Bluetooth technology.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Let’s build something useful.</h2>
+      <p>
+        I am currently looking for junior IT, software, data, energy-tech and remote roles where I can grow fast and contribute to practical technical solutions.
+      </p>
+      <div class="actions" style="justify-content:center;">
+        <a class="btn primary" href="mailto:your.email@example.com">Email Me</a>
+        <a class="btn secondary" href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noreferrer">GitHub Profile</a>
+        <a class="btn secondary" href="https://www.linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Iliya Vasilev. Built with HTML, CSS and GitHub Pages.
+    </div>
+  </footer>
+</body>
+</html>
